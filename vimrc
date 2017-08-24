@@ -6,6 +6,8 @@ set sw=4
 set bs=2
 set nu
 
+" 设置搜索结果全部高亮
+"set hlsearch
 let mapleader='\'
 
 " 打开文件时跳转到上次编辑的位置
@@ -20,17 +22,21 @@ let javascript_enable_domhtmlcss = 1
 " nerdtree配置，若vim打开文件夹则自动打开nerdtree
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+
 " nerdtree自动包含隐藏文件
 let NERDTreeShowHidden=1
 
-" nm打开nerdtree
-map nm :NERDTreeToggle<CR>
+" mn打开nerdtree
+map mn :NERDTreeToggle<CR>
 
-" 关闭markdown文件折叠
+" 关闭markdown块折叠
 let g:vim_markdown_folding_disabled = 1
 
 " vim中的剪切板重定向到系统剪切板
 set clipboard=unnamed
+
+" 启用鼠标控制光标
+set mouse=a
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -42,6 +48,7 @@ Plugin 'VundleVim/Vundle.vim'
 " 来自GitHub的插件
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'tpope/vim-fugitive'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
@@ -55,6 +62,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'posva/vim-vue'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'rizzatti/dash.vim'
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
@@ -76,7 +84,7 @@ filetype plugin indent on    " required
 " ycm配置
 let g:ycm_seed_identifiers_with_syntax = 1
 set completeopt=longest,menu
-let g:ycm_min_num_of_chars_for_completion=2    " 从第2个键入字符就开始罗列匹配项
+let g:ycm_min_num_of_chars_for_completion=1    " 从第1个键入字符就开始罗列匹配项
 let g:ycm_complete_in_comments = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 0
 let g:ycm_collect_identifiers_from_tags_files= 1
@@ -107,6 +115,9 @@ let Tlist_Show_Menu=1 "显示Taglist菜单
 " 将eslint设置为javascript的检查器
 let g:syntastic_javascript_checkers = ['eslint']
 
+" emmet 快捷键（设置为在normal下用tab）
+let g:user_emmet_leader_key='<S-z>'
+
 " 恐怖如斯的jk
 inoremap jk <esc>
 
@@ -126,7 +137,7 @@ inoremap <C-l> <right>
 autocmd BufWritePre *.js,*html,*css :Autoformat<CR>
 
 " html
-autocmd filetype html nmap <tab> <C-y>,
+autocmd filetype html nmap <tab> <S-z>,
 
 " js
 autocmd filetype js,html,css set ts=2 | set sw=2
