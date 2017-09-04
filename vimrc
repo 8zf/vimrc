@@ -4,7 +4,12 @@ filetype off                  " required
 set ts=4
 set sw=4
 set bs=2
+
+" 显示行号
 set nu
+
+" 搜索时忽略大小写
+set ic
 
 " 设置搜索结果全部高亮
 "set hlsearch
@@ -49,6 +54,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
@@ -107,10 +113,10 @@ let g:ycm_semantic_triggers = {
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-let Tlist_Show_One_File=1 "只显示当前文件的列表
-let Tlist_Exit_OnlyWindow=1 "只存在Tag列表窗口时，自动关闭Tag列表窗口
-let Tlist_File_Fold_Auto_Close=1 "打开的其他文件的列表折叠
-let Tlist_Show_Menu=1 "显示Taglist菜单
+let Tlist_Show_One_File=1 " 只显示当前文件的列表
+let Tlist_Exit_OnlyWindow=1 " 只存在Tag列表窗口时，自动关闭Tag列表窗口
+let Tlist_File_Fold_Auto_Close=1 " 打开的其他文件的列表折叠
+let Tlist_Show_Menu=1 " 显示Taglist菜单
 
 " 将eslint设置为javascript的检查器
 let g:syntastic_javascript_checkers = ['eslint']
