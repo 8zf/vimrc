@@ -14,6 +14,7 @@ git clone https://github.com/SharpZhang/vimrc.git ~/
 echo "source ~/vimrc/vimrc" > ~/.vimrc
 ```
 source是为了更好的版本管理，同时这将覆盖原来的.vimrc内容
+
 3. 安装插件
 ```
 vim ~/.vimrc
